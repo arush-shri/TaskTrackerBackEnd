@@ -1,6 +1,5 @@
 
-require("dotenv").config();
-var url = process.env.DATABASE;       // TO CHANGE TO ORIGINAL URL
+var url = "mongodb+srv://shriarush:MernTaskT0D0@cluster0.t7fbaqi.mongodb.net/?retryWrites=true&w=majority";       // TO CHANGE TO ORIGINAL URL
 const { MongoClient } = require('mongodb');
 const client = new MongoClient(url);
 const database = client.db("TaskTracker")

@@ -18,7 +18,7 @@ app.use("/routes", router);
 app.use("/signinup", signInUp);
 app.use("/task", taskRoutes);
 app.use("/user", userRoute);
-const port = process.env.PORT || 4000;
+const port = 4000;
 app.listen(port, () => {
     console.log("Server started at port 4000");
 })

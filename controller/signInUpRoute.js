@@ -3,9 +3,7 @@ const { initiateSignin, initiateSignup } = require("./SignInUp")
 const signRoute = express.Router();
 const jwt = require('jsonwebtoken');
 const cors = require("cors");
-express.use(cors({
-    origin: '*',
-}));
+express.use(cors());
 
 signRoute.post("/login", async (req, res) => {
     const result = await initiateSignin(req.body.email, req.body.password)

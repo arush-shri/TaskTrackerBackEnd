@@ -2,6 +2,10 @@ const express = require("express");
 const { initiateSignin, initiateSignup } = require("./SignInUp")
 const signRoute = express.Router();
 const jwt = require('jsonwebtoken');
+const cors = require("cors");
+express.use(cors({
+    origin: '*',
+}));
 
 signRoute.post("/login", async (req, res) => {
     const result = await initiateSignin(req.body.email, req.body.password)
@@ -20,7 +24,7 @@ signRoute.post("/login", async (req, res) => {
 signRoute.post("/signup", async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Credentials', false);
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, OPTIONS, DELETE');
 
     if(req.method === 'OPTIONS') {

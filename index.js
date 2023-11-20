@@ -8,7 +8,11 @@ const cors = require("cors");
 
 app.set("view engine", "ejs")
 app.use('/controller', express.static('public/controller'));
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: false,
+}));
 app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Hello, this is the root route!');

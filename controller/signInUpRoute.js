@@ -18,6 +18,17 @@ signRoute.post("/login", async (req, res) => {
 })
 
 signRoute.post("/signup", async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, OPTIONS, DELETE');
+
+    if(req.method === 'OPTIONS') {
+        return res.status(200).json(({
+            body: "OK"
+        }))
+    }
+
     const result = await initiateSignup(req.body.email, req.body.password, req.body.uname, req.body.phoneNum, req.body.age)
     if(result === true){
         const { createHash } = require('crypto');

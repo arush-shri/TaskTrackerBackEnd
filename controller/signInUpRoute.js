@@ -17,6 +17,9 @@ signRoute.post("/login", async (req, res) => {
     }
 })
 
+signRoute.options("/signup", (req, res) => {
+    res.status(204).end();
+})
 signRoute.post("/signup", async (req, res) => {
     const result = await initiateSignup(req.body.email, req.body.password, req.body.uname, req.body.phoneNum, req.body.age)
     if(result === true){
